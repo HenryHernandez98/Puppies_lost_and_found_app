@@ -5,14 +5,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Api {
 
-    private final static String Url = "API:SIG";
+    private final static String Url = "";
 
     private static String getBase(){
         return Url + "/";
     }
 
     public static ApiInterface instance(){
-        Retrofit retrofit = new Retrofit.Builder()
+       Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.getBase())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

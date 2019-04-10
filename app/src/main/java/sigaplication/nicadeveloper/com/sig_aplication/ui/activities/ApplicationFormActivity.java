@@ -3,6 +3,8 @@ package sigaplication.nicadeveloper.com.sig_aplication.ui.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationListener;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -153,4 +155,5 @@ public class ApplicationFormActivity extends AppCompatActivity {
         Intent intent = new Intent(ApplicationFormActivity.this, MapsActivity.class);
         startActivity(intent);
     }
+
 }

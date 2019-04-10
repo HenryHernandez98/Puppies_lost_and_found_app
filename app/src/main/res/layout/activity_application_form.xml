@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout android:layout_width="match_parent"
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -333,6 +335,7 @@
                 </android.support.v7.widget.CardView>
 
             </LinearLayout>
+
         </RelativeLayout>
 
     </ScrollView>
