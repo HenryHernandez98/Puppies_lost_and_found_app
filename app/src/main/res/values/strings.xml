@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">GeographicInformationApp</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="activity_login_username_hint">Nombre de usuario</string>
+    <string name="activity_login_password_hint">Contraseña</string>
+    <string name="activity_signUp_button_text">Crear cuenta</string>
+    <string name="activity_login_button_text">Iniciar Sesión</string>
+    <string name="question_lose_account">¿olvidaste tu contraseña?</string>
+    <!--Navigation-->
+    <string name="title_home">Home</string>
+    <string name="title_profile_description">Perfil</string>
+    <string name="title_disappear">Desaparecidos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_1">Dashboard</string>
+    <string name="hello_blank_fragment_2">Mis denuncias salvadas</string>
+    <string name="button_toolbar_send_create_product">Create Product</string>
+    <string name="tet_edit_profile_name">Nombre</string>
+    <string name="Text_edit_profile_user_name">Nombre de usuario</string>
+    <string name="Text_view_edit_profile_private_information">Otra información</string>
+    <string name="Text_edit_profile_email_address">Correo electronico</string>
+    <string name="Text_edit_profile_phone_number">Número de telefono</string>
+    <string name="text_button_edit_profile_change_photo">Cambiar foto</string>
+    <string name="button_edit_profile">Editar Perfil</string>
+    <string name="pet_name">Nombre de mascota:</string>
+    <string name="pet_date">Fecha:</string>
+    <string name="pet_city">Ciudad:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
