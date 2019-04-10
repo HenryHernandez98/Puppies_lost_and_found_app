@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -12,11 +14,15 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -42,6 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(getApplicationContext(), "No es posible iniciar mapa ", Toast.LENGTH_LONG).show();
             finish();
         }
+
 
 
     }
@@ -91,7 +98,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel));
         */
 
+
     }
 
+    /*
+    private String actualCity (double latitude, double longitude){
+        String cityName = "";
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 10);
+            if (addresses.size() > 0){
+                for (Address address: addresses){
+                    if(address.getLocality() != null && address.getLocality().length() > 0){
+                        cityName = address.getLocality();
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return cityName;
+
+    }
+*/
 
 }
