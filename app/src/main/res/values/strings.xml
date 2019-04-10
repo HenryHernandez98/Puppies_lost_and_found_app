@@ -27,4 +27,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- to use in Activity Application form -->
+    <string name="btn_add_pic_text">Añadir foto</string>
+    <string name="dog_name_text_view">Nombre mascota</string>
+    <string name="dog_age_text_view_text">Edad mascota</string>
+    <string name="dog_description_text_view_text">Descripción mascota</string>
+    <string name="dog_date_text_view_text">Fecha de pérdida</string>
+    <string name="dog_city_text_view_text">Ubicación</string>
+
+
 </resources>

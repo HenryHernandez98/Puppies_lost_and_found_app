@@ -26,4 +26,6 @@
     <color name="loginContainerBorderColor">#2317b1f8</color>
     <color name="activityLogin_container">#FFFFFF</color>
     <color name="activityLogin_editText">#b6b3b3</color>
+
+    <color name="form_edit_text_color">#01afff</color>
 </resources>
