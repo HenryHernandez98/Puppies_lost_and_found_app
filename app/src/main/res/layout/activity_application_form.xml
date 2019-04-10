@@ -15,8 +15,7 @@
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="?attr/homeAsUpIndicator"
         android:elevation="@dimen/toolbar_elevation"
-        android:background="@color/colorPrimary"
-        app:Theme="@style/ThemeOverlay.AppCompat.Light">
+        android:background="@color/colorPrimary">
 
     </android.support.v7.widget.Toolbar>
 

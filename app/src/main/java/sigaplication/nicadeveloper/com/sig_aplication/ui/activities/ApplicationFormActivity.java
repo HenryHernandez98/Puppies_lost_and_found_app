@@ -35,6 +35,10 @@ public class ApplicationFormActivity extends AppCompatActivity {
     private EditText dateEditText;
     private DatePickerDialog picker;
 
+    //Maps
+    private Button locationButton;
+    private EditText locationEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +52,17 @@ public class ApplicationFormActivity extends AppCompatActivity {
         initViews();
 
         //Select Images option
-        Glide.with(getApplicationContext()).load(R.drawable.img_placeholder).apply(new RequestOptions().fitCenter()).into(iv_image);
+        Glide.with(getApplicationContext()).load(R.drawable.ic_image_placeholder).apply(new RequestOptions().fitCenter()).into(iv_image);
         addImages.setOnClickListener(view -> setShowImages());
 
         //Show the calendar dialog
         dateEditText.setOnClickListener(v -> showCalendar());
         dateButton = findViewById(R.id.dateButton);
         dateButton.setOnClickListener(v -> showCalendar());
+
+        //Show maps
+        locationButton.setOnClickListener(v -> showMaps());
+        locationEditText.setOnClickListener(v -> showMaps());
 
     }
 
@@ -64,6 +72,9 @@ public class ApplicationFormActivity extends AppCompatActivity {
         addImages = findViewById(R.id.add_button);
         //Calendar
         dateEditText = findViewById(R.id.dog_date_edit_text);
+        //maps
+        locationButton = findViewById(R.id.cityButton);
+        locationEditText = findViewById(R.id.dog_city_edit_text);
     }
 
     private void setShowImages(){
@@ -136,5 +147,10 @@ public class ApplicationFormActivity extends AppCompatActivity {
             picker.show();
         });
 
+    }
+
+    private void showMaps() {
+        Intent intent = new Intent(ApplicationFormActivity.this, MapsActivity.class);
+        startActivity(intent);
     }
 }

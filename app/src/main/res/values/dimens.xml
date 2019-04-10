@@ -39,5 +39,8 @@
     <dimen name="dog_city_linear_layout_margin_left">70dp</dimen>
     <dimen name="btn_date_width">40dp</dimen>
     <dimen name="btn_date_height">40dp</dimen>
+    <dimen name="floating_action_btn_margin">16dp</dimen>
+    <dimen name="floating_action_btn_elevation">10dp</dimen>
+    <dimen name="fresco_simple_drawe_view_height">150dp</dimen>
 
 </resources>

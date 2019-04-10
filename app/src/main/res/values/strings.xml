@@ -34,6 +34,8 @@
     <string name="dog_description_text_view_text">Descripción mascota</string>
     <string name="dog_date_text_view_text">Fecha de pérdida</string>
     <string name="dog_city_text_view_text">Ubicación</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="fresco_simple_drawe_view_esc">Desc</string>
 
 
 </resources>

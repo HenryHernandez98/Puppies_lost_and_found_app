@@ -1,8 +1,10 @@
 package sigaplication.nicadeveloper.com.sig_aplication.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -19,33 +21,46 @@ import sigaplication.nicadeveloper.com.sig_aplication.ui.fragments.ProfileFragme
 
 public class MainActivity extends AppCompatActivity {
 
+    private FloatingActionButton addComplaint;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initViews();
+        initActions();
+
         BottomNavigationView navigationView = findViewById(R.id.navigation);
         final HomeFragment homeFragment = new HomeFragment();
         final ComplaintFragment complaintFragment = new ComplaintFragment();
         final ProfileFragment profileFragment = new ProfileFragment();
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-               int id= menuItem.getItemId();
-               if(id == R.id.navigation_home){
-                   setFragment(homeFragment);
-                   return true;
-               }else if (id == R.id.navigation_complaint){
-                   setFragment(complaintFragment);
-                   return true;
-               }else if ((id == R.id.navigation_profile)){
-                   setFragment(profileFragment);
-                   return true;
-               }
-                return false;
-            }
+        navigationView.setOnNavigationItemSelectedListener(menuItem -> {
+           int id= menuItem.getItemId();
+           if(id == R.id.navigation_home){
+               setFragment(homeFragment);
+               return true;
+           }else if (id == R.id.navigation_complaint){
+               setFragment(complaintFragment);
+               return true;
+           }else if ((id == R.id.navigation_profile)){
+               setFragment(profileFragment);
+               return true;
+           }
+            return false;
         });
 
+    }
 
+    private void initViews(){
+        addComplaint = findViewById(R.id.new_complaint);
+    }
+
+    private void initActions(){
+        addComplaint.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ApplicationFormActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setFragment(Fragment fragment){

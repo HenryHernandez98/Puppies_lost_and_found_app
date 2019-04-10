@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.MainActivity">
 
-
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
@@ -20,6 +18,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/new_complaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/floating_action_btn_margin"
+        android:src="@drawable/ic_add"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        android:clickable="true"
+        android:elevation="@dimen/floating_action_btn_elevation"/>
 
         <FrameLayout
             android:layout_above="@id/navigation"

@@ -50,8 +50,8 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:contentDescription="Desc"
+                android:layout_height="@dimen/fresco_simple_drawe_view_height"
+                android:contentDescription="@string/fresco_simple_drawe_view_esc"
                 fresco:placeholderImage="@drawable/ic_image_placeholder" />
 
             <TextView
