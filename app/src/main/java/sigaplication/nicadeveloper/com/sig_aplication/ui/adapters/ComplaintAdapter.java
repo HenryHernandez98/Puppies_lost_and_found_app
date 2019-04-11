@@ -30,14 +30,14 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
     }
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView petName;
-        public TextView city;
-        public TextView date;
-        public CardView cardView;
-        public TextView id;
-        public Button share;
-        public Button like;
-        public SimpleDraweeView draweeView;
+        private TextView petName;
+        private TextView city;
+        private TextView date;
+        private CardView cardView;
+        private TextView id;
+        private Button share;
+        private Button like;
+        private SimpleDraweeView draweeView;
 
 
         public ViewHolder (View view){
@@ -74,9 +74,6 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailComplaintActivity.class);
-                /*intent.putExtra("name",productos.get(position).getName());
-                intent.putExtra("description",productos.get(position).getDescription());
-                intent.putExtra("price",String.valueOf(productos.get(position).getPrice()));*/
                 context.startActivity(intent);
             }
         });
@@ -93,9 +90,9 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String shareSubject = "Devhyr";
-                String shareText = "This is a great app, you should try it out";
-                String shareTitle = "Share product via";
+                String shareSubject = "Pets";
+                String shareText = "Esta mascota se encuentra perdida";
+                String shareTitle = "Compartido vía:";
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
