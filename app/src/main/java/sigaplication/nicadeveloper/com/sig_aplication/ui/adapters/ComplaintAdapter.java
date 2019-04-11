@@ -17,14 +17,14 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 import sigaplication.nicadeveloper.com.sig_aplication.R;
-import sigaplication.nicadeveloper.com.sig_aplication.models.complaint;
+import sigaplication.nicadeveloper.com.sig_aplication.models.Complaint;
 import sigaplication.nicadeveloper.com.sig_aplication.ui.activities.DetailComplaintActivity;
 
 public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.ViewHolder> {
-    private List<complaint> complaint;
+    private List<Complaint> complaint;
     private Context context;
 
-    public ComplaintAdapter(Context context, List<complaint> complaint) {
+    public ComplaintAdapter(Context context, List<Complaint> complaint) {
         this.complaint = complaint;
         this.context = context;
     }
@@ -64,7 +64,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull final ComplaintAdapter.ViewHolder holder, final int position) {
-        final complaint post = complaint.get(position);
+        final Complaint post = complaint.get(position);
         holder.petName.setText(post.getPetName());
         holder.city.setText(post.getCity());
         holder.date.setText(post.getDate());
