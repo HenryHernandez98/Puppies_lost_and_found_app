@@ -3,23 +3,38 @@ package sigaplication.nicadeveloper.com.sig_aplication.ui.activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,11 +45,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int MY_REQUEST_INT = 177;
     private GoogleMap mMap;
 
+    private EditText search;
+    private static final float DEFAULT_ZOOM = 15f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
+        search = findViewById(R.id.search_edit_text);
 
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
 
@@ -49,8 +69,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             finish();
         }
 
+        initSearch();
 
+    }
 
+    private void initSearch(){
+        search.setOnEditorActionListener((v, actionId, event) -> {
+            if(actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE
+                    || event.getAction() == event.ACTION_DOWN || event.getAction() == event.KEYCODE_ENTER){
+                //Execute the method for searching
+                geoLocate();
+            }
+
+            return false;
+        });
+        hideKeyBoard();
+    }
+
+    private void geoLocate(){
+        String searchString = search.getText().toString();
+        Geocoder geocoder = new Geocoder(MapsActivity.this);
+        List<Address> list = new ArrayList<>();
+        try {
+            list = geocoder.getFromLocationName(searchString, 1);
+        } catch (Exception e){
+            e.getMessage();
+        }
+
+        if(list.size() > 0){
+            Address address = list.get(0);
+
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM, address.getAddressLine(0));
+        }
     }
 
     /**
@@ -72,6 +122,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         uiSettings.setZoomControlsEnabled(true);
         uiSettings.setZoomGesturesEnabled(true);
 
+        LatLng Nicaragua = new LatLng(12.8654156, -85.2072296);
+        mMap.addMarker(new MarkerOptions().position(Nicaragua).title("Marker in Nicaragua"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Nicaragua));
+        float zoomLevel = (float) 6.50;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Nicaragua, zoomLevel));
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -90,18 +146,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         /*
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng Nicaragua = new LatLng(12.8654156, -85.2072296);
+        mMap.addMarker(new MarkerOptions().position(Nicaragua).title("Marker in Nicaragua"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Nicaragua));
 
         float zoomLevel = 16;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoomLevel));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Nicaragua, zoomLevel));
         */
 
 
     }
 
-    /*
+   private void moveCamera(LatLng latLng, float zoom, String title) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+       MarkerOptions options = new MarkerOptions().position(latLng).title(title);
+       mMap.addMarker(options);
+
+       hideKeyBoard();
+   }
+
     private String actualCity (double latitude, double longitude){
         String cityName = "";
 
@@ -124,6 +188,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return cityName;
 
     }
-*/
+
+    private void getCity(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
+        } else {
+            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            try {
+                String city = actualCity(location.getLatitude(), location.getLongitude());
+                //locationEditText.setText(city);
+                onDestroy();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(MapsActivity.this, "Not found", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+   private void hideKeyBoard(){
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+   }
 
 }
