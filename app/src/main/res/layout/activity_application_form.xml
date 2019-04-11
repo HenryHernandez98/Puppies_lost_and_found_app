@@ -133,7 +133,8 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="text"
                                 android:textColor="@color/textColor"
-                                android:textSize="@dimen/dog_name_edit_text_size_text"/>
+                                android:textSize="@dimen/dog_name_edit_text_size_text"
+                                android:maxLength="15"/>
                         </android.support.design.widget.TextInputLayout>
 
                     </LinearLayout>
@@ -171,7 +172,8 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="number"
                                 android:textColor="@color/textColor"
-                                android:textSize="@dimen/dog_name_edit_text_size_text"/>
+                                android:textSize="@dimen/dog_name_edit_text_size_text"
+                                android:maxLength="2"/>
                         </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 

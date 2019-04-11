@@ -22,7 +22,7 @@
             <LinearLayout
                 android:id="@+id/activity_login_content"
                 android:layout_width="match_parent"
-                android:layout_height="544dp"
+                android:layout_height="700dp"
                 android:layout_margin="15dp"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -88,7 +88,9 @@
                     android:background="@drawable/login_button_styles"
                     android:text="@string/activity_login_button_text"
                     android:textColor="@color/colorBackground"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:clickable="true"/>
+
                 <Button
                     android:id="@+id/signUp"
                     android:layout_width="wrap_content"
@@ -97,9 +99,20 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="35dp"
                     android:background="@android:color/transparent"
-                    android:text="@string/question_lose_account"
+                    android:text="@string/question_create_accaunt"
                     android:textColor="@color/login_edit_text_color"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:clickable="true"/>
+
+                <Button
+                    android:id="@+id/restorePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:text="@string/question_restore_password"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="14sp" />
 
 
             </LinearLayout>

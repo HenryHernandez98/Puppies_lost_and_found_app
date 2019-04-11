@@ -43,4 +43,24 @@
     <dimen name="floating_action_btn_elevation">10dp</dimen>
     <dimen name="fresco_simple_drawe_view_height">150dp</dimen>
 
+
+    <!-- Restore Password activity -->
+    <dimen name="activity_restore_password_text_input_layout_margin">10dp</dimen>
+
+    <dimen name="top_linear_layout_height_restore_password">450dp</dimen>
+    <dimen name="image_linear_layout_padding_top">90dp</dimen>
+    <dimen name="circle_image_layout_height">200dp</dimen>
+    <dimen name="text_layout_padding_top">40dp</dimen>
+    <dimen name="restore_password_textview_text_size">25sp</dimen>
+    <dimen name="email_tittle_text_size">16sp</dimen>
+    <dimen name="email_tittle_padding_top">50dp</dimen>
+    <dimen name="email_tittle_padding_left">50dp</dimen>
+    <dimen name="restore_password_edit_text_size">16sp</dimen>
+    <dimen name="text_input_padding_rigth">50dp</dimen>
+    <dimen name="text_input_padding_left">50dp</dimen>
+    <dimen name="send_email_button_height">40dp</dimen>
+    <dimen name="send_email_button_margin_bottom">35dp</dimen>
+    <dimen name="send_email_button_margin_top">15dp</dimen>
+    <dimen name="send_email_button_text_size">14sp</dimen>
+
 </resources>

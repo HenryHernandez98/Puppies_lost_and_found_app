@@ -5,7 +5,8 @@
     <string name="activity_login_password_hint">Contraseña</string>
     <string name="activity_signUp_button_text">Crear cuenta</string>
     <string name="activity_login_button_text">Iniciar Sesión</string>
-    <string name="question_lose_account">¿olvidaste tu contraseña?</string>
+    <string name="question_create_accaunt">Crear cuenta</string>
+    <string name="question_restore_password">¿olvidaste tu contraseña?</string>
     <!--Navigation-->
     <string name="title_home">Home</string>
     <string name="title_profile_description">Perfil</string>
@@ -38,4 +39,10 @@
     <string name="fresco_simple_drawe_view_esc">Desc</string>
 
 
+    <!-- Restore password activity -->
+    <string name="topTittle">Restablecer Contraseña</string>
+    <string name="emailTittle">Correo Electrónico</string>
+    <string name="email">example@example.com</string>
+    <string name="send">Enviar Correo</string>
+    <string name="title_activity_restore_password">RestorePasswordActivity</string>
 </resources>

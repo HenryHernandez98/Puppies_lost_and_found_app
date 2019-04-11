@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button signIn;
     private Button signUp;
+    private Button restorePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,24 +40,22 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         signIn = (Button) findViewById(R.id.signIn);
         signUp = (Button) findViewById(R.id.signUp);
+        restorePassword = findViewById(R.id.restorePassword);
 
     }
 
 
     private void setActions() {
-        signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
+        signIn.setOnClickListener(view -> signIn());
+
+        signUp.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), SingUpActivity.class);
+            startActivity(intent);
         });
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SingUpActivity.class);
-                startActivity(intent);
-            }
+        restorePassword.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), RestorePasswordActivity.class);
+            startActivity(intent);
         });
     }
 
