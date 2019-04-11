@@ -1,7 +1,5 @@
 package sigaplication.nicadeveloper.com.sig_aplication.ui.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,9 +20,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 import sigaplication.nicadeveloper.com.sig_aplication.api.Api;
-import sigaplication.nicadeveloper.com.sig_aplication.models.complaint;
+import sigaplication.nicadeveloper.com.sig_aplication.models.Complaint;
 import sigaplication.nicadeveloper.com.sig_aplication.ui.adapters.ComplaintAdapter;
-import sigaplication.nicadeveloper.com.sig_aplication.ui.adapters.ComplaintImageAdapter;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -60,10 +57,10 @@ public class HomeFragment extends Fragment {
         petName = view.findViewById(R.id.pet_name);
         city = view.findViewById(R.id.pet_city);
         date = view.findViewById(R.id.pet_date);
-        Call<List<complaint>> complaintCall = Api.instance().getComplaints(Remember.getString("access_token",""));
-        complaintCall.enqueue(new Callback<List<complaint>>() {
+        Call<List<Complaint>> complaintCall = Api.instance().getComplaints(Remember.getString("access_token",""));
+        complaintCall.enqueue(new Callback<List<Complaint>>() {
             @Override
-            public void onResponse(Call<List<complaint>> call, Response<List<complaint>> response) {
+            public void onResponse(Call<List<Complaint>> call, Response<List<Complaint>> response) {
                 if(response.isSuccessful()){
                     ComplaintAdapter complaintAdapter = new ComplaintAdapter(getContext(),response.body());
                     recyclerView.setAdapter(complaintAdapter);
@@ -74,7 +71,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<complaint>> call, Throwable t) {
+            public void onFailure(Call<List<Complaint>> call, Throwable t) {
                 Log.e("Err","Error trying to connect to the API", t);
             }
         });
