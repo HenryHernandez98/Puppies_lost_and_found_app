@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GeographicInformationApp</string>
+    <string name="app_name">Pets</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="activity_login_username_hint">Nombre de usuario</string>
     <string name="activity_login_password_hint">Contraseña</string>

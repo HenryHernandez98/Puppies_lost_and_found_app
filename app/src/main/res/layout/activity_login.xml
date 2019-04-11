@@ -38,7 +38,7 @@
 
 
                 <TextView
-                    android:text="@string/activity_login_username_hint"
+                    android:text="Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -49,14 +49,14 @@
 
 
                 <EditText
-                    android:id="@+id/username"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
                     android:layout_margin="3dp"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"
-                    android:inputType="text"/>
+                    android:inputType="textEmailAddress"/>
 
 
                 <TextView

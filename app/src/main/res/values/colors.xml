@@ -20,6 +20,7 @@
 
     <!-- basic colors -->
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="transparent">#0FFFFFFF</color>zq
     <!--Color to use in Login layout-->
     <color name="loginContainerBackground">#f0ffffff</color>

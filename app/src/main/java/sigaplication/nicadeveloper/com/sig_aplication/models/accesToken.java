@@ -1,13 +1,31 @@
 package sigaplication.nicadeveloper.com.sig_aplication.models;
 
 public class accesToken {
-    private String token;
+    private int ttl;
+    private String userId;
+    private String id;
 
-    public String getToken() {
-        return token;
+    public int getTtl() {
+        return ttl;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setTtl(int ttl) {
+        this.ttl = ttl;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

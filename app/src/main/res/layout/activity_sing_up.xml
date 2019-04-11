@@ -22,7 +22,7 @@
             <LinearLayout
                 android:id="@+id/activity_login_content"
                 android:layout_width="match_parent"
-                android:layout_height="544dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -39,26 +39,78 @@
 
 
                 <TextView
-                    android:text="@string/activity_login_username_hint"
+                    android:text="Nombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView3"
+                    android:id="@+id/text_view_nombre"
                     android:typeface="sans"
                     android:textColor="@color/login_edit_text_color"
                     android:textSize="16sp"
-                    android:layout_margin="3dp"/>
+                    android:layout_margin="5dp"/>
 
+                <EditText
+                    android:id="@+id/edit_text_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="text"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:text="Teléfono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_view_tel"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="number"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:text="Nombre de Usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_username"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
 
                 <EditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_login_bottom_layout_height"
-                    android:layout_margin="3dp"
+                    android:inputType="text"
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
+                <TextView
+                    android:text="Correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_email"
+                    android:typeface="sans"
+                    android:textColor="@color/login_edit_text_color"
+                    android:textSize="16sp"
+                    android:layout_margin="5dp"/>
 
-
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_login_bottom_layout_height"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/login_edit_text_color"
+                    android:background="@drawable/input_styles"
+                    android:textSize="16sp"/>
                 <TextView
                     android:text="@string/activity_login_password_hint"
                     android:layout_width="match_parent"
@@ -77,6 +129,7 @@
                     android:textColor="@color/login_edit_text_color"
                     android:background="@drawable/input_styles"
                     android:textSize="16sp"/>
+
 
 
                 <Button
