@@ -166,7 +166,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
        hideKeyBoard();
    }
 
-    private String actualCity (double latitude, double longitude){
+   /*
+   private String actualCity (double latitude, double longitude){
         String cityName = "";
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -187,24 +188,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         return cityName;
 
-    }
-
-    private void getCity(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
-        } else {
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-            try {
-                String city = actualCity(location.getLatitude(), location.getLongitude());
-                //locationEditText.setText(city);
-                onDestroy();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(MapsActivity.this, "Not found", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+    } */
 
    private void hideKeyBoard(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

@@ -18,9 +18,6 @@ public class User {
     @ColumnInfo (name = "username")
     private String username;
 
-    @ColumnInfo (name = "password")
-    private String password;
-
     @ColumnInfo (name = "name")
     private String name;
 

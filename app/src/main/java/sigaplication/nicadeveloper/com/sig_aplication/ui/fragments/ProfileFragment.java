@@ -1,13 +1,9 @@
 package sigaplication.nicadeveloper.com.sig_aplication.ui.fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +23,6 @@ import retrofit2.Response;
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 import sigaplication.nicadeveloper.com.sig_aplication.api.Api;
 import sigaplication.nicadeveloper.com.sig_aplication.models.User;
-import sigaplication.nicadeveloper.com.sig_aplication.models.complaint;
-import sigaplication.nicadeveloper.com.sig_aplication.models.userPicture;
-import sigaplication.nicadeveloper.com.sig_aplication.ui.activities.EditProfileActivity;
-import sigaplication.nicadeveloper.com.sig_aplication.ui.adapters.ComplaintAdapter;
 import sigaplication.nicadeveloper.com.sig_aplication.ui.adapters.UserAdapter;
 
 

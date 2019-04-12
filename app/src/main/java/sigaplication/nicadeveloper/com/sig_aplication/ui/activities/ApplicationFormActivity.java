@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 
@@ -238,5 +239,6 @@ public class ApplicationFormActivity extends AppCompatActivity {
         return cityName;
 
     }
+
 
 }
