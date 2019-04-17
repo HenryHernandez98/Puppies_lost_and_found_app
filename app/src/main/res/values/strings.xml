@@ -45,4 +45,6 @@
     <string name="email">example@example.com</string>
     <string name="send">Enviar Correo</string>
     <string name="title_activity_restore_password">RestorePasswordActivity</string>
+    <string name="invalid_user_txt">Correo incorrecto</string>
+    <string name="password_invalid">Contraseña incorrecta</string>
 </resources>

@@ -1,15 +1,12 @@
-package sigaplication.nicadeveloper.com.sig_aplication.models;
+package sigaplication.nicadeveloper.com.sig_aplication.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = Complaint.class,
-        parentColumns = "id",
-        childColumns = "complaint_id",
-        onDelete = ForeignKey.NO_ACTION))
-public class Picture {
+@Entity
+public class Image {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

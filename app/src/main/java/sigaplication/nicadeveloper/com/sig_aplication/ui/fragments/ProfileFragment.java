@@ -22,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 import sigaplication.nicadeveloper.com.sig_aplication.api.Api;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
 import sigaplication.nicadeveloper.com.sig_aplication.ui.adapters.UserAdapter;
 
 

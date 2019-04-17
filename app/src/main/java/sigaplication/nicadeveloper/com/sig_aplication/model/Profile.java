@@ -1,9 +1,9 @@
-package sigaplication.nicadeveloper.com.sig_aplication.models;
+package sigaplication.nicadeveloper.com.sig_aplication.model;
 
 public class Profile {
-    int id;
-    private int iduser;
-    private String nombre;
+    private int id;
+    private String iduser;
+    private String name;
     private String phone;
 
     public int getId() {
@@ -14,20 +14,12 @@ public class Profile {
         this.id = id;
     }
 
-    public int getIduser() {
+    public String getIduser() {
         return iduser;
     }
 
-    public void setIduser(int iduser) {
+    public void setIduser(String iduser) {
         this.iduser = iduser;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getPhone() {
@@ -36,5 +28,13 @@ public class Profile {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

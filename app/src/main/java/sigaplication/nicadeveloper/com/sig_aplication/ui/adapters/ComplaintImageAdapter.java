@@ -13,13 +13,13 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 import sigaplication.nicadeveloper.com.sig_aplication.R;
-import sigaplication.nicadeveloper.com.sig_aplication.models.Picture;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Image;
 
 public class ComplaintImageAdapter  extends RecyclerView.Adapter<ComplaintImageAdapter.ViewHolder>{
-    private List<Picture> picturesList;
+    private List<Image> picturesList;
     private Context context;
 
-    public ComplaintImageAdapter(List<Picture> picturesList1, Context context1) {
+    public ComplaintImageAdapter(List<Image> picturesList1, Context context1) {
         this.picturesList = picturesList1;
         this.context = context1;
     }
@@ -41,7 +41,7 @@ public class ComplaintImageAdapter  extends RecyclerView.Adapter<ComplaintImageA
 
     @Override
     public void onBindViewHolder(@NonNull ComplaintImageAdapter.ViewHolder holder, int position) {
-        final Picture pic = picturesList.get(position);
+        final Image pic = picturesList.get(position);
         Uri uri = Uri.parse(pic.getUrl());
         holder.draweeView.setImageURI(uri);
     }

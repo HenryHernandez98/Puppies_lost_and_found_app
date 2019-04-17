@@ -17,17 +17,18 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 import sigaplication.nicadeveloper.com.sig_aplication.R;
-import sigaplication.nicadeveloper.com.sig_aplication.models.Complaint;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Complaint;
 import sigaplication.nicadeveloper.com.sig_aplication.ui.activities.DetailComplaintActivity;
 
 public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.ViewHolder> {
     private List<Complaint> complaint;
     private Context context;
 
-    public ComplaintAdapter(Context context, List<Complaint> complaint) {
+    public ComplaintAdapter(List<Complaint> complaint, Context context) {
         this.complaint = complaint;
         this.context = context;
     }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView petName;
@@ -65,18 +66,16 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
     @Override
     public void onBindViewHolder(@NonNull final ComplaintAdapter.ViewHolder holder, final int position) {
         final Complaint post = complaint.get(position);
-        holder.petName.setText(post.getPetName());
+        holder.petName.setText(post.getPetname());
         holder.city.setText(post.getCity());
         holder.date.setText(post.getDate());
-        //holder.date.setText(String.valueOf(post.getPrice()));
-        holder.id.setText("User Name");
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        /*holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailComplaintActivity.class);
                 context.startActivity(intent);
             }
-        });
+        });*/
 
 
 
@@ -87,7 +86,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
             }
         });
 
-        holder.share.setOnClickListener(new View.OnClickListener() {
+        /*holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String shareSubject = "Pets";
@@ -99,7 +98,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
                 context.startActivity(Intent.createChooser(shareIntent,shareTitle));
             }
-        });
+        });*/
     }
 
     @Override

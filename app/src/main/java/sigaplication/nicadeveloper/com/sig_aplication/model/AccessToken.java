@@ -1,6 +1,6 @@
-package sigaplication.nicadeveloper.com.sig_aplication.models;
+package sigaplication.nicadeveloper.com.sig_aplication.model;
 
-public class accessToken {
+public class AccessToken {
     private int ttl;
     private String userId;
     private String id;

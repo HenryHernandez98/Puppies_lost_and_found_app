@@ -1,7 +1,6 @@
 package sigaplication.nicadeveloper.com.sig_aplication.ui.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +16,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import sigaplication.nicadeveloper.com.sig_aplication.R;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 

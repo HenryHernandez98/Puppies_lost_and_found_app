@@ -5,13 +5,12 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import sigaplication.nicadeveloper.com.sig_aplication.models.Picture;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
-import sigaplication.nicadeveloper.com.sig_aplication.models.UserPicture;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.UserPicture;
 
 public interface UserPictureDao {
 
-    @Query("SELECT * FROM UserPicture WHERE user_id = :id")
+    @Query("SELECT * FROM UserPicture WHERE userid = :id")
     User loadByUserId(int id);
 
     @Insert
@@ -30,5 +29,5 @@ public interface UserPictureDao {
     void deleteAll();
 
     @Query("Select * from UserPicture order by id DESC LIMIT 1")
-    User getLastId();
+    UserPicture getLastId();
 }

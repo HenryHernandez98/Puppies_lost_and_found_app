@@ -6,15 +6,15 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import sigaplication.nicadeveloper.com.sig_aplication.models.Complaint;
-import sigaplication.nicadeveloper.com.sig_aplication.models.Profile;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
-import sigaplication.nicadeveloper.com.sig_aplication.models.UserPicture;
-import sigaplication.nicadeveloper.com.sig_aplication.models.accessToken;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Complaint;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Profile;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.UserPicture;
+import sigaplication.nicadeveloper.com.sig_aplication.model.AccessToken;
 
 public interface ApiInterface {
     //Method GET
-    @GET("Complaint")
+    @GET("Complaints")
     Call<List<Complaint>> getComplaints(@Header("Authorization") String authorization);
     @GET("Users")
     Call<List<User>> getUserInfo(@Header("Authorization") String authorization);
@@ -30,7 +30,7 @@ public interface ApiInterface {
     Call<User> saveUser(@Body User user);
 
     @POST("Users/login")
-    Call<accessToken> loginUser(@Body User user);
+    Call<AccessToken> login(@Body User user);
 
     @POST("Profiles")
     Call<Profile> createProfile(@Body Profile profile);

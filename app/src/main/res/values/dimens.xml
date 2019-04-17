@@ -62,5 +62,6 @@
     <dimen name="send_email_button_margin_bottom">35dp</dimen>
     <dimen name="send_email_button_margin_top">15dp</dimen>
     <dimen name="send_email_button_text_size">14sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

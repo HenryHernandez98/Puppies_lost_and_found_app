@@ -1,22 +1,19 @@
-package sigaplication.nicadeveloper.com.sig_aplication.models;
+package sigaplication.nicadeveloper.com.sig_aplication.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = User.class,
-        parentColumns = "id",
-        childColumns = "user_id",
-        onDelete = ForeignKey.NO_ACTION))
+@Entity
 public class Complaint {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
 
-    @ColumnInfo (name = "petName")
-    private String petName;
+    @ColumnInfo (name = "petname")
+    private String petname;
 
     @ColumnInfo (name = "description")
     private String description;
@@ -33,8 +30,8 @@ public class Complaint {
     @ColumnInfo (name = "date")
     private String date;
 
-    @ColumnInfo(name = "user_id")
-    private int userId;
+    @ColumnInfo(name = "iduser")
+    private int iduser;
 
     public int getId() {
         return id;
@@ -44,12 +41,12 @@ public class Complaint {
         this.id = id;
     }
 
-    public String getPetName() {
-        return petName;
+    public String getPetname() {
+        return petname;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setPetname(String petname) {
+        this.petname = petname;
     }
 
     public String getDescription() {
@@ -92,7 +89,12 @@ public class Complaint {
         this.longitude = longitude;
     }
 
-    public int getUserId() {
-        return userId;
+
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
     }
 }

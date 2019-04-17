@@ -7,7 +7,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
 
 public interface UserDao {
 
@@ -20,8 +20,8 @@ public interface UserDao {
     @Insert
     void insert(User user);
 
-    @Query("SELECT * FROM User u WHERE u.name LIKE :name")
-    List<User> loadBYName(String name);
+    @Query("SELECT * FROM User u WHERE u.username LIKE :username")
+    List<User> loadByUsername(String username);
 
     @Delete
     void delete(User user);

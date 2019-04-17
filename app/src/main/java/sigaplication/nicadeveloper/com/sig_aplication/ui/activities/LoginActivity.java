@@ -14,24 +14,32 @@ import android.widget.Toast;
 
 import com.tumblr.remember.Remember;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 import sigaplication.nicadeveloper.com.sig_aplication.api.Api;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
-import sigaplication.nicadeveloper.com.sig_aplication.models.accessToken;
+import sigaplication.nicadeveloper.com.sig_aplication.constants.Constants;
+import sigaplication.nicadeveloper.com.sig_aplication.databaseDao.AppDatabase;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.AccessToken;
 
 public class LoginActivity extends AppCompatActivity {
 
 
     //Elements of the login
-    private EditText username;
-    private EditText email;
-    private EditText password;
-    private Button login;
-    private Button signUp;
+    private EditText editTextUser;
+    private EditText editTextPassword;
+    private Button btnLogin;
+    private Button btnSignUp;
     private Button restorePassword;
+    private AccessToken tokenResponse;
+
+    AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,29 +52,27 @@ public class LoginActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
 
         //Call all the necessary methods
-        initViews();
+        bindUI();
         initActions();
     }
 
-    private void initViews() {
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        login = (Button) findViewById(R.id.signIn);
-        signUp = (Button) findViewById(R.id.signUp);
+    private void bindUI() {
+        editTextUser = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.password);
+        btnLogin = findViewById(R.id.signIn);
+        btnSignUp = findViewById(R.id.signUp);
         restorePassword = findViewById(R.id.restorePassword);
-
     }
 
-
     private void initActions() {
-        login.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login();
+                login(editTextUser.getText().toString(), editTextPassword.getText().toString());
             }
         });
 
-        signUp.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SingUpActivity.class);
@@ -76,64 +82,50 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void login() {
-        String email2 = String.valueOf(email.getText().toString());
-        String pass2 = String.valueOf(password.getText().toString());
-        if(email2.equals("") || pass2.equals("")) {
-            Toast.makeText(getApplicationContext(),"Can't leave empty fields",Toast.LENGTH_SHORT).show();
-        }else{
-            User user = new User();
-            user.setEmail(email.getText().toString());
-            user.setPassword(password.getText().toString());
-            saveUserData(email2,pass2);
-            Call<accessToken> accesTokenCall =Api.instance().loginUser(user);
-            accesTokenCall.enqueue(new Callback<accessToken>() {
+    private void login(final String email, final String password) {
+        // Reset errors.
+        editTextUser.setError(null);
+        editTextPassword.setError(null);
+
+        if (!isValidUser(email)) {
+            editTextUser.setError(getString(R.string.invalid_user_txt));
+        } else if (!isValidPassword(password)) {
+            editTextPassword.setError(getString(R.string.password_invalid));
+        } else {
+
+
+            final User userRequest = new User();
+            userRequest.setEmail(email);
+            userRequest.setPassword(password);
+
+            Call<AccessToken> call = Api.instance().login(userRequest);
+            call.enqueue(new Callback<AccessToken>() {
                 @Override
-                public void onResponse(@NonNull Call<accessToken> call,@NonNull Response<accessToken> response) {
-                    if(response.isSuccessful()) {
-                        Remember.putString("access_token", response.body().getId(), new Remember.Callback() {
-                            @Override
-                            public void apply(Boolean success) {
-                                Toast.makeText(getApplicationContext(), "Success to login", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-                    }else{
-                        Toast.makeText(getApplicationContext(),"An error occur while login was doing",Toast.LENGTH_SHORT).show();
+                public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+                    tokenResponse = response.body();
+
+                    if(response.body()!=null){
+                        Remember.putString(Constants.ACCESS_TOKEN, tokenResponse.getId());
+                        Toast.makeText(getApplicationContext(), "Sesión iniciada", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(@NonNull Call<accessToken> call, @NonNull Throwable t) {
-                    Log.e("Err","An error occur while login was doing", t);
+                public void onFailure(Call<AccessToken> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
+
                 }
             });
 
-
         }
     }
-    public void saveUserData(String u, String p){
 
-        SharedPreferences sharedPreferences = getSharedPreferences("credentials", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("email",u);
-        editor.putString("password",p);
-
-        editor.commit();
+    private boolean isValidUser(String email) {
+        return email.contains("@");
     }
 
-    /*public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.login:
-                login();
-                break;
-            case R.id.signUp:
-                Intent intent = new Intent(LoginActivity.this, SingUpActivity.class);
-                startActivity(intent);
-                break;
-        }
-    }*/
+    private boolean isValidPassword(String password) {
+        return password.length() >= 4;
+    }
 }

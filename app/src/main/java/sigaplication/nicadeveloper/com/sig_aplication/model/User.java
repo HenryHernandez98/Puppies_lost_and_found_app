@@ -1,16 +1,16 @@
-package sigaplication.nicadeveloper.com.sig_aplication.models;
+package sigaplication.nicadeveloper.com.sig_aplication.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity (tableName = "User")
+@Entity
 public class User {
 
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo(name = "id")
-    private String id;
+    private int id;
 
     @ColumnInfo (name = "password")
     private String password;
@@ -18,23 +18,15 @@ public class User {
     @ColumnInfo (name = "username")
     private String username;
 
-    @ColumnInfo (name = "name")
-    private String name;
-
     @ColumnInfo (name = "email")
     private String email;
 
-    @Embedded
-    private Complaint complaint;
 
-    @Embedded
-    private UserPicture userPicture;
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,19 +48,11 @@ public class User {
         this.email = email;
     }
 
-    public Complaint getComplaint() {
-        return complaint;
+    public String getUsername() {
+        return username;
     }
 
-    public void setComplaint(Complaint complaint) {
-        this.complaint = complaint;
-    }
-
-    public UserPicture getUserPicture() {
-        return userPicture;
-    }
-
-    public void setUserPicture(UserPicture userPicture) {
-        this.userPicture = userPicture;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

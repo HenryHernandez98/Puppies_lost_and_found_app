@@ -10,15 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.tumblr.remember.Remember;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sigaplication.nicadeveloper.com.sig_aplication.R;
 import sigaplication.nicadeveloper.com.sig_aplication.api.Api;
-import sigaplication.nicadeveloper.com.sig_aplication.models.Profile;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Profile;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
 
 public class SingUpActivity extends AppCompatActivity {
     private EditText pass;
@@ -54,44 +52,26 @@ public class SingUpActivity extends AppCompatActivity {
         String nameUser = String.valueOf(email.getText().toString());
         String password = String.valueOf(pass.getText().toString());
         if(nameUser.equals(" ")|| password.equals("")) {
-            Toast.makeText(getApplicationContext(),"Can't leave empty fields",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Debe llenar todos los campos",Toast.LENGTH_SHORT).show();
         }else {
             User user = new User();
-
+            //user.setUsername(username.getText().toString());
             user.setEmail(email.getText().toString());
             user.setPassword(pass.getText().toString());
             Call<User> userCall = Api.instance().saveUser(user);
             userCall.enqueue(new Callback<User>() {
                 @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    if (response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Success to Register", Toast.LENGTH_LONG).show();
+                public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                    if (response.body()!= null) {
+                        Toast.makeText(getApplicationContext(), "Se registró correctamente", Toast.LENGTH_SHORT).show();
                         Profile profile = new Profile();
-                        profile.setNombre(name.getText().toString());
-                        profile.setIduser(Integer.parseInt(response.body().getId()));
+                        profile.setName(name.getText().toString());
+                        profile.setIduser(String.valueOf(response.body().getId()));
                         profile.setPhone(phone.getText().toString());
-                        Call<Profile> profileCall = Api.instance().createProfile(profile);
-                        profileCall.enqueue(new Callback<Profile>() {
-                            @Override
-                            public void onResponse(@NonNull Call<Profile> call, @NonNull Response<Profile> response) {
-                                if (response.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Perfil creado", Toast.LENGTH_SHORT).show();
-                                    assert response.body() != null;
-                                    profile.setId(response.body().getId());
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "An error occur while register was doing", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(@NonNull Call<Profile> call, @NonNull Throwable t) {
-                                Log.e("Err", "Error to show");
-                            }
-                        });
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(getApplicationContext(), "An error occur while register was doing", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error al registrarse", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -104,25 +84,21 @@ public class SingUpActivity extends AppCompatActivity {
         }
     }
 
-   private void initActions() {
-       signUp.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               signUp();
-           }
-       });
-
-       login.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-               startActivity(intent);
-           }
-       });
-
-   }
-
-
+    private void initActions() {
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signUp();
+            }
+        });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 
 }

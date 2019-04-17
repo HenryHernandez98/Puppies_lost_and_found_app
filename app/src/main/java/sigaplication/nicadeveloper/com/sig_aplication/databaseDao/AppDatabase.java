@@ -5,15 +5,19 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import sigaplication.nicadeveloper.com.sig_aplication.models.Complaint;
-import sigaplication.nicadeveloper.com.sig_aplication.models.Picture;
-import sigaplication.nicadeveloper.com.sig_aplication.models.User;
-import sigaplication.nicadeveloper.com.sig_aplication.models.UserPicture;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Complaint;
+import sigaplication.nicadeveloper.com.sig_aplication.model.Image;
+import sigaplication.nicadeveloper.com.sig_aplication.model.User;
+import sigaplication.nicadeveloper.com.sig_aplication.model.UserPicture;
 
-@Database(entities = {User.class, Complaint.class, Picture.class, UserPicture.class}, version = 1)
+@Database(entities = {User.class, Complaint.class, Image.class, UserPicture.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
+    public abstract ComplaintDao complaintDao();
+    public abstract UserPictureDao userPictureDao();
+    public abstract ProfileDao profileDao();
+    public abstract ImageDao pictureDao();
 
     private static AppDatabase INSTANCE;
 
